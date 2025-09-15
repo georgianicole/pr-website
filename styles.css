@@ -7,11 +7,13 @@ body {
       background-color: #00316E;
       color: white;
       padding: 15px 20px;
+      text-align: center;
     }
 
     header h1 {
       margin: 0;
       font-size: 24px;
+      padding: 20px;
     }
 
     /* Navigation menu */
@@ -40,7 +42,8 @@ body {
     }
 
     nav ul li a:hover {
-      background-color: #555;
+      background-color: #F5C400;
+      color: #000000;
     }
 
     main {
@@ -50,7 +53,7 @@ body {
     }
 
     footer {
-      background-color: #333;
+      background-color: #00316E;
       color: white;
       text-align: center;
       padding: 10px;
