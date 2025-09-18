@@ -7,41 +7,152 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- ===== Header / Nav ===== -->
   <header>
-    <div>
-      <img id="logo" src="Images/cropped-pr-alone-logo-1.png">
-      <h1>PR Total Trades Ltd</h1>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">K&B</div>
+        <span>Your Company</span>
+      </div>
+      <nav aria-label="Main">
+        <a href="#intro">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
-    <h2>Welcome</h2>
-    <p>Here at PR Total Trades Ltd, we are kitchen and bathroom fitters based on the Wirral. </p>
-    <h2>Services</h2>
-    <p></p>
-    <h2>Portfolio</h2>
-    <h3>Kitchens</h3>
-    <img src="Images/Kitchen_001.jpeg">
-    <h3>Bathrooms</h3>
-    <p></p>
-    <h2>Contact Us</h2>
-    <h3>Tel-</h3>
-    <p>07504 204901</p>
-    <h3>eMail</h3>
-    <p>prtotaltrades@btinternet.com</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84989.2761283896!2d-3.145638202665982!3d53.37732436727027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b27eed3e13ec5%3A0x40cf99eed6d33f0!2sWirral!5e1!3m2!1sen!2suk!4v1757940429128!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <!-- ===== Intro / Hero ===== -->
+    <section id="intro" class="section">
+      <div class="container hero">
+        <div>
+          <span class="pill">Kitchen & Bathroom Specialists</span>
+          <h1 class="lead">Design • Supply • Installation — expertly fitted kitchens and bathrooms across <span style="white-space:nowrap">Your Area</span>.</h1>
+          <p>We’re a small, friendly team delivering meticulous craftsmanship, clear timelines and tidy work sites. From complete remodels to made‑to‑measure upgrades, we handle everything end‑to‑end so you don’t have to.</p>
+          <div class="badges">
+            <span class="pill">Fully insured</span>
+            <span class="pill">Gas Safe partners</span>
+            <span class="pill">NICEIC partners</span>
+            <span class="pill">10+ years experience</span>
+          </div>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.5rem">
+            <a class="btn" href="#contact">Get a free quote</a>
+            <a class="btn" style="background:#fff;color:var(--text);border-color:var(--border)" href="#portfolio">View our work</a>
+          </div>
+        </div>
+        <div class="photo card">
+          <!-- Replace this image with your own hero photo -->
+          <img src="https://images.unsplash.com/photo-1600566753151-384129cf4e3d?q=80&w=1600&auto=format&fit=crop" alt="Modern fitted kitchen with island and pendant lighting" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Services quick points (optional) ===== -->
+    <section class="section" style="padding-top:0">
+      <div class="container grid services">
+        <div class="item">
+          <h4>Kitchen Fitting</h4>
+          <p>Full rip‑out to final finish: units, worktops, appliances, tiling and flooring.</p>
+        </div>
+        <div class="item">
+          <h4>Bathroom Renovation</h4>
+          <p>Baths, showers, wet rooms and bespoke storage with watertight installations.</p>
+        </div>
+        <div class="item">
+          <h4>Design & Supply</h4>
+          <p>3D plans, sourcing trusted brands and coordinating deliveries.</p>
+        </div>
+        <div class="item">
+          <h4>Small Works</h4>
+          <p>Worktop swaps, tiling refreshes, new taps, sinks and lighting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Portfolio ===== -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem">
+          <div>
+            <h2 style="margin:.2rem 0">Recent Projects</h2>
+            <p style="color:var(--muted); margin:0">Tap an image to view it larger. Swap the image URLs to update the gallery.</p>
+          </div>
+          <a class="btn" href="#contact">Request a site visit</a>
+        </div>
+        <div class="grid">
+          <!-- Masonry-like grid with size helpers -->
+          <figure class="tile medium"><img data-full="https://images.unsplash.com/photo-1588854337221-4t" src="https://images.unsplash.com/photo-1588854337221-4f2d2a4b2b05?q=80&w=800&auto=format&fit=crop" alt="Herringbone tiled bathroom" loading="lazy"><figcaption class="cap">Herringbone Tiling</figcaption></figure>
+          <figure class="tile small"><img data-full="https://images.unsplash.com/photo-1598300184325-2t" src="https://images.unsplash.com/photo-1598300184325-4adf5c0c7b57?q=80&w=800&auto=format&fit=crop" alt="Compact shaker kitchen" loading="lazy"><figcaption class="cap">Shaker Kitchen</figcaption></figure>
+          <figure class="tile large"><img data-full="https://images.unsplash.com/photo-1556910103-1t" src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop" alt="Island with quartz worktops" loading="lazy"><figcaption class="cap">Quartz Worktops</figcaption></figure>
+          <figure class="tile medium"><img data-full="https://images.unsplash.com/photo-1600566753151-3t" src="https://images.unsplash.com/photo-1600566753151-384129cf4e3d?q=80&w=1000&auto=format&fit=crop" alt="Handleless kitchen units" loading="lazy"><figcaption class="cap">Handleless Units</figcaption></figure>
+          <figure class="tile small"><img data-full="https://images.unsplash.com/photo-1564540574859-1t" src="https://images.unsplash.com/photo-1564540574859-6b2f0e2b06ad?q=80&w=800&auto=format&fit=crop" alt="Walk‑in shower" loading="lazy"><figcaption class="cap">Walk‑in Shower</figcaption></figure>
+          <figure class="tile medium"><img data-full="https://images.unsplash.com/photo-1586201375761-1t" src="https://images.unsplash.com/photo-1586201375761-83865001e31b?q=80&w=1000&auto=format&fit=crop" alt="Utility room with storage" loading="lazy"><figcaption class="cap">Utility Room</figcaption></figure>
+        </div>
+      </div>
+
+      <!-- Lightbox modal -->
+      <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-label="Image viewer" hidden>
+        <button class="close" aria-label="Close" onclick="closeLightbox()">Close ✕</button>
+        <img id="lightbox-img" alt="Expanded project image" />
+      </div>
+    </section>
+
+    <!-- ===== Testimonials ===== -->
+    <section id="testimonials" class="section" style="background:linear-gradient(180deg, rgba(255,255,255,.6), rgba(255,255,255,1));">
+      <div class="container">
+        <h2 style="margin-top:0">Customer Testimonials</h2>
+        <div class="grid testimonials">
+          <div class="card quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>“Absolutely over the moon with our new kitchen. The team were punctual, tidy and the finish is superb.”</p>
+            <div class="name">— Sarah P., Sale</div>
+          </div>
+          <div class="card quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>“Bathroom refit completed on time and exactly as quoted. Great communication throughout the job.”</p>
+            <div class="name">— Daniel R., Didsbury</div>
+          </div>
+          <div class="card quote">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p>“Quality craftsmanship. They handled everything from electrics to tiling with care and attention.”</p>
+            <div class="name">— Helen W., Altrincham</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact & Map ===== -->
+    <section id="contact" class="section">
+      <div class="container contact">
+        <div class="panel card">
+          <h2 style="margin-top:.2rem">Get in touch</h2>
+          <p style="color:var(--muted); margin-top:-.5rem">Tell us about your project and we’ll get back within one working day.</p>
+          <ul class="list" aria-label="Contact details">
+            <li>📞 <a href="tel:+441612345678">0161 234 5678</a></li>
+            <li>✉️ <a href="mailto:hello@yourcompany.co.uk">hello@yourcompany.co.uk</a></li>
+            <li>📍 <span>Unit 12, Example Trade Park, Manchester M1 2AB</span></li>
+            <li>⏰ <span>Mon–Fri 8:00–17:00</span></li>
+          </ul>
+          <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap">
+            <a class="btn" href="mailto:hello@yourcompany.co.uk?subject=Quote%20request">Email us</a>
+            <a class="btn" href="https://wa.me/441612345678" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <div class="map-wrap card">
+          <!-- Replace the src with your own Google Maps embed link: open Google Maps > Share > Embed a map -->
+          <iframe class="map" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9497.04160601266!2d-2.2461286!3d53.4794893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb1bd1e6d1e33%3A0x36b1b5e3e9c!2sManchester%20City%20Centre!5e0!3m2!1sen!2suk!4v1700000000000"></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- ===== Footer ===== -->
   <footer>
-    <p>&copy; 2025 PR Total Trades Ltd. All rights reserved.</p>
+    <div class="container">
+      © <span id="year"></span> Your Company • Kitchen & Bathroom Fitters • <a href="#intro">Back to top</a>
+    </div>
   </footer>
-</body>
 </html>
