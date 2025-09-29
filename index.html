@@ -59,6 +59,8 @@
     .gallery img { width:100%; aspect-ratio:4/3; object-fit:cover; }
     .split { display:grid; grid-template-columns: 1fr; gap: 2.2rem; }
 
+    
+
     /* Testimonials */
     .testimonials { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .quote { border:1px solid var(--border); padding:1rem; background: #fff; }
@@ -88,6 +90,37 @@
       nav { display:none; } /* keep header tiny on phones */
       .gallery { --cols: 1; }
     }
+    /* === Carousels === */
+    .carousel { position: relative; border: 1px solid var(--border); background:#fff; }
+    .carousel .track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 85%;   /* 1 card per view on mobile */
+      gap: .75rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      padding: .75rem;
+    }
+    .carousel .track::-webkit-scrollbar { height: 10px; }
+    .carousel .track::-webkit-scrollbar-thumb { background: #ccd1e4; }
+    .carousel .slide { scroll-snap-align: start; border:1px solid var(--border); background:#fff; }
+    .carousel img { width:100%; aspect-ratio: 4/3; object-fit: cover; }
+    
+    /* Prev/Next controls */
+    .ctrl {
+      position:absolute; top: 50%; transform: translateY(-50%);
+      background: var(--navy); color:#fff; border:0; padding:.6rem .7rem;
+      font-weight:800; line-height:1; cursor:pointer;
+    }
+    .ctrl:disabled { opacity:.4; cursor:default; }
+    .ctrl.prev { left: .25rem; }
+    .ctrl.next { right: .25rem; }
+    
+    /* Responsive widths for slides */
+    @media (min-width: 860px){ .carousel .track { grid-auto-columns: 48%; } }   /* ~2 per view */
+    @media (min-width: 1120px){ .carousel .track { grid-auto-columns: 32%; } }  /* ~3 per view */
+
   </style>
 </head>
 <body>
@@ -123,27 +156,40 @@
 
     <!-- ================= Portfolio ================= -->
     <section id="portfolio" class="section" style="background: var(--panel);">
-      <div class="container split">
-        <div>
-          <h2 class="h2">Bathrooms</h2>
-          <p class="sub">Recent bathroom refurbishments. Replace the image URLs below to update the gallery.</p>
-          <div class="gallery" aria-label="Bathroom gallery">
-            <figure><img src="Images/Bathroom_001.jpeg" alt="Walk‑in shower with tiled walls" loading="lazy"></figure>
-            <figure><img src="Images/Bathroom_002.jpeg" alt="Herringbone tiled bathroom" loading="lazy"></figure>
-            <figure><img src="Images/Bathroom_003.jpeg" alt="Modern bathroom vanity" loading="lazy"></figure>
-          </div>
+  <div class="container split">
+    <!-- Bathrooms -->
+    <div>
+      <h2 class="h2">Bathrooms</h2>
+      <p class="sub">Take a look at our recent bathroom refurbishments</p>
+      <div class="carousel" data-id="bathrooms">
+        <button class="ctrl prev" aria-label="Previous bathroom image">‹</button>
+        <div class="track" id="track-bathrooms">
+          <figure class="slide"><img src="Images/Bathroom_001.jpeg" alt="Bathroom 1"></figure>
+          <figure class="slide"><img src="Images/Bathroom_002.jpeg" alt="Bathroom 2"></figure>
+          <figure class="slide"><img src="Images/Bathroom_003.jpeg" alt="Bathroom 3"></figure>
+          <!-- add more <figure class="slide">…</figure> as needed -->
         </div>
-        <div>
-          <h2 class="h2">Kitchens</h2>
-          <p class="sub">Handleless, shaker, and everything in between. Swap these URLs for your projects.</p>
-          <div class="gallery" aria-label="Kitchen gallery">
-            <figure><img src="Images/Kitchen_001.jpeg" alt="Kitchen island with quartz worktops" loading="lazy"></figure>
-            <figure><img src="Images/Kitchen_002.jpeg" alt="Compact shaker kitchen" loading="lazy"></figure>
-            <figure><img src="Images/Kitchen_003.jpeg" alt="Utility room cabinetry" loading="lazy"></figure>
-          </div>
-        </div>
+        <button class="ctrl next" aria-label="Next bathroom image">›</button>
       </div>
-    </section>
+    </div>
+
+    <!-- Kitchens -->
+    <div>
+      <h2 class="h2">Kitchens</h2>
+      <p class="sub">Take a look at our recent kitchen refurbishments</p>
+      <div class="carousel" data-id="kitchens">
+        <button class="ctrl prev" aria-label="Previous kitchen image">‹</button>
+        <div class="track" id="track-kitchens">
+          <figure class="slide"><img src="Images/Kitchen_001.jpeg" alt="Kitchen 1"></figure>
+          <figure class="slide"><img src="Images/Kitchen_002.jpeg" alt="Kitchen 2"></figure>
+          <figure class="slide"><img src="Images/Kitchen_003.jpeg" alt="Kitchen 3"></figure>
+        </div>
+        <button class="ctrl next" aria-label="Next kitchen image">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- ================= Testimonials ================= -->
     <section id="testimonials" class="section">
@@ -202,6 +248,28 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Prev/Next buttons scroll the track by ~one viewport width
+  for (const carousel of document.querySelectorAll('.carousel')) {
+    const track = carousel.querySelector('.track');
+    const prev = carousel.querySelector('.prev');
+    const next = carousel.querySelector('.next');
+
+    function updateButtons(){
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= maxScroll - 2;
+    }
+    function scrollByAmount(dir){
+      track.scrollBy({ left: dir * track.clientWidth * 0.95, behavior: 'smooth' });
+      setTimeout(updateButtons, 350);
+    }
+
+    prev.addEventListener('click', () => scrollByAmount(-1));
+    next.addEventListener('click', () => scrollByAmount(1));
+    track.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
+  }
   </script>
 </body>
 </html>
